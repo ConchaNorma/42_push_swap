@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 22:47:22 by cnorma            #+#    #+#             */
-/*   Updated: 2021/10/06 19:40:37 by cnorma           ###   ########.fr       */
+/*   Updated: 2021/10/07 21:15:48 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,32 @@ void	Check(t_Stack *a, int check)
 	if (check < 0)
 	{
 		ft_putstr_fd("Error\n", 2);
-		FreeStack(a);
+		if (a)
+			FreeStack(a);
 		exit(1);
 	}
 	if (check == 1)
 	{
-		FreeStack(a);
+		if (a)
+			FreeStack(a);
 		exit (0);
 	}
 }
 
-void	CheckParam(int argc, char **str)
+void	CheckParam(char *str)
 {
-	int	i;
 	int	j;
 	int	check;
 
 	check = 0;
-	i = 1;
-	if (argc < 2)
-		check = 1;
-	else
+	j = 0;
+	while (str[j])
 	{
-		while (str[i])
-		{
-			j = 0;
-			while (str[i][j])
-			{
-				if ((str[i][j] == '-' || str[i][j] == '+'))
-					j++;
-				if ((str[i][j] < '0' || str[i][j] > '9'))
-					check = -1;
-				j++;
-			}
-			i++;
-		}
+		if ((str[j] == '-' || str[j] == '+'))
+			j++;
+		if ((str[j] < '0' || str[j] > '9'))
+			check = -1;
+		j++;
 	}
 	Check(NULL, check);
 }

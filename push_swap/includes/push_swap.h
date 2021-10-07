@@ -36,7 +36,7 @@ void	ft_stack_order_elem(t_Stack *src);
 void	FillStackEnd(t_Stack *a, int argc, char **str );
 void	FreeStack(t_Stack *src);
 void	Check(t_Stack *a, int check);
-void	CheckParam(int argc, char **str);
+void	CheckParam(char *str);
 void	CheckDuplicates(t_Stack *src);
 void	CheckSorted(t_Stack *src);
 void	ft_stack_swap(t_Stack *a);

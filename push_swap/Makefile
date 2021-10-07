@@ -6,7 +6,7 @@
 #    By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 20:45:20 by cnorma            #+#    #+#              #
-#    Updated: 2021/10/06 20:01:22 by cnorma           ###   ########.fr        #
+#    Updated: 2021/10/07 21:29:33 by cnorma           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ HEADER = includes/push_swap.h
 CC = gcc
 
 LFLAGS = -Wall -Wextra -Werror -o
-CFLAGS = -Wall -Wextra -Werror -c
+CFLAGS = -Wall -Wextra -Werror -c -g
 
 all: $(LIBFT) $(SRCS) $(NAME) $(HEADER)
 

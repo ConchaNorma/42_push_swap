@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 22:36:05 by cnorma            #+#    #+#             */
-/*   Updated: 2021/10/07 18:52:20 by cnorma           ###   ########.fr       */
+/*   Updated: 2021/10/07 21:51:43 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,16 +88,19 @@ void	FillStackEnd(t_Stack *a, int argc, char **str)
 {
 	t_lists	*tmp;
 	int		i;
+	int		j;
 	char	**ss;
 
 	i = 1;
 	while (i < argc)
 	{
 		ss = ft_split(str[i], ' ');
-		while (*ss)
+		j = 0;
+		while (ss[j])
 		{
+			CheckParam(ss[j]);
 			tmp = ft_listnew();
-			tmp->val = ft_atoi_ps(*ss);
+			tmp->val = ft_atoi_ps(ss[j]);
 			tmp->order = 0;
 			tmp->stepnum = 0;
 			tmp->prev = a->tail;
@@ -108,8 +111,12 @@ void	FillStackEnd(t_Stack *a, int argc, char **str)
 			if (!a->head)
 				a->head = a->tail;
 			a->elem_count++;
-			ss++;
+			j++;
 		}
+		j = 0;
+		while (ss[j])
+			free(ss[j++]);
+		free(ss);
 		i++;
 	}
 	ft_stack_max_min_elem(a);
