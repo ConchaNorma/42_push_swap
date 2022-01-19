@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 20:33:31 by cnorma            #+#    #+#             */
-/*   Updated: 2021/08/25 20:33:33 by cnorma           ###   ########.fr       */
+/*   Updated: 2021/10/15 19:58:47 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static char	**ft_word(char const *s, char c, char **ss, unsigned int str_num)
 		while (*s == c && *s)
 			s++;
 		i = 0;
-		while (s[i] != c)
+		while (s[i] != c && s[i])
 			i++;
 		ss[j] = ft_substr((s), 0, i);
 		if (ss[j++] == NULL)

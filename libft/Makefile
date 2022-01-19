@@ -51,7 +51,8 @@ FLAGS	=	-Wall -Werror -Wextra
 all	:	$(NAME)
 
 $(NAME)	:	$(OBJ)
-	@ar rcs $(NAME) $?
+	ar rcs $(NAME) $?
+	@echo "libft is ready to use"
 
 %.o	:	%.c
 	@gcc $(FLAGS) -c $< -o $@ -MD
@@ -59,7 +60,7 @@ $(NAME)	:	$(OBJ)
 include $(wildcard $(D_FILES))
 
 bonus	:	$(OBJ_B)
-	@ar rcs $(NAME) $?
+	ar rcs $(NAME) $?
 
 clean:
 	@rm -f $(OBJ) $(OBJ_B) $(D_FILES)

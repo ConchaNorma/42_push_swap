@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 22:44:07 by cnorma            #+#    #+#             */
-/*   Updated: 2021/10/06 19:49:38 by cnorma           ###   ########.fr       */
+/*   Updated: 2021/10/12 19:27:44 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_stepnum(t_Stack *src, t_Stack *dst)
 	}
 }
 
-int	ft_Mid_val(t_Stack *src)
+int	ft_mid_val(t_Stack *src)
 {
 	t_lists	*p;
 	int		mid_val;
@@ -58,14 +58,14 @@ int	ft_Mid_val(t_Stack *src)
 	return (mid_val);
 }
 
-void	PushToBwithMid(t_Stack *src, t_Stack *dst)
+void	pushtobwithmid(t_Stack *src, t_Stack *dst)
 {
 	t_lists		*p;
 	long long	mid_val;
 	int			i;
 
 	i = src->elem_count;
-	mid_val = ft_Mid_val(src);
+	mid_val = ft_mid_val(src);
 	while (i > 3)
 	{
 		p = src->head;

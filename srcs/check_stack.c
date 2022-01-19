@@ -6,57 +6,46 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 22:47:22 by cnorma            #+#    #+#             */
-/*   Updated: 2021/10/06 19:40:37 by cnorma           ###   ########.fr       */
+/*   Updated: 2021/10/12 19:36:54 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	Check(t_Stack *a, int check)
+void	check_validity(t_Stack *a, int check)
 {
 	if (check < 0)
 	{
 		ft_putstr_fd("Error\n", 2);
-		FreeStack(a);
+		freestack(a);
 		exit(1);
 	}
 	if (check == 1)
 	{
-		FreeStack(a);
+		freestack(a);
 		exit (0);
 	}
 }
 
-void	CheckParam(int argc, char **str)
+void	checkparam(char *str)
 {
-	int	i;
 	int	j;
 	int	check;
 
 	check = 0;
-	i = 1;
-	if (argc < 2)
-		check = 1;
-	else
+	j = 0;
+	while (str[j])
 	{
-		while (str[i])
-		{
-			j = 0;
-			while (str[i][j])
-			{
-				if ((str[i][j] == '-' || str[i][j] == '+'))
-					j++;
-				if ((str[i][j] < '0' || str[i][j] > '9'))
-					check = -1;
-				j++;
-			}
-			i++;
-		}
+		if ((str[j] == '-' || str[j] == '+'))
+			j++;
+		if ((str[j] < '0' || str[j] > '9'))
+			check = -1;
+		j++;
 	}
-	Check(NULL, check);
+	check_validity(NULL, check);
 }
 
-void	CheckDuplicates(t_Stack *src)
+void	checkduplicates(t_Stack *src)
 {
 	t_lists	*tmp;
 	t_lists	*tmp2;
@@ -75,10 +64,10 @@ void	CheckDuplicates(t_Stack *src)
 		}
 		tmp = tmp->next;
 	}
-	Check(src, check);
+	check_validity(src, check);
 }
 
-void	CheckSorted(t_Stack *src)
+void	checksorted(t_Stack *src)
 {
 	t_lists	*tmp;
 	int		check;
@@ -91,10 +80,10 @@ void	CheckSorted(t_Stack *src)
 			check = 0;
 		tmp = tmp->next;
 	}
-	Check(src, check);
+	check_validity(src, check);
 }
 
-int	ft_atoi_ps(const char *str)
+int	ft_atoi_ps(t_Stack *a, const char *str)
 {
 	int			sign;
 	long long	num;
@@ -112,10 +101,7 @@ int	ft_atoi_ps(const char *str)
 		num = (num * 10) + ((int)*str - '0');
 		str++;
 		if (((num * sign) > INT_MAX) || ((num * sign) < INT_MIN))
-		{
-			ft_putstr_fd("Error\n", 2);
-			exit(1);
-		}
+			check_validity(a, -1);
 	}
 	return (num * sign);
 }

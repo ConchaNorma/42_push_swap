@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 22:39:02 by cnorma            #+#    #+#             */
-/*   Updated: 2021/10/06 20:02:15 by cnorma           ###   ########.fr       */
+/*   Updated: 2021/10/12 19:28:31 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_stack_sort_big(t_Stack *src, t_Stack *dst)
 {
 	long long	min_stepnum_val;
 
-	PushToBwithMid(src, dst);
+	pushtobwithmid(src, dst);
 	ft_stack_sort_3(src);
 	while (dst->head)
 	{
@@ -70,7 +70,7 @@ void	ft_stack_sort_big(t_Stack *src, t_Stack *dst)
 		ft_rotate_optimizer_num_a(src, src->min);
 }
 
-void	SortStack(t_Stack *a)
+void	sortstack(t_Stack *a)
 {
 	t_Stack	*b;
 
@@ -83,28 +83,7 @@ void	SortStack(t_Stack *a)
 			ft_stack_sort_small(a, b);
 		else if (a->elem_count > 6)
 			ft_stack_sort_big(a, b);
-		FreeStack(b);
+		freestack(b);
 	}
-	FreeStack(a);
-}
-
-void	FreeStack(t_Stack *src)
-{
-	t_lists	*tmp;
-
-	tmp = NULL;
-	if (src)
-	{
-		while (src->head)
-		{
-			if (src->head->next)
-				tmp = src->head->next;
-			free(src->head);
-			src->head = NULL;
-			src->head = tmp;
-			tmp = NULL;
-		}
-		free(src);
-		src = NULL;
-	}
+	freestack(a);
 }
